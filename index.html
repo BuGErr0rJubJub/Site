@@ -1,55 +1,261 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="JubJubDeveloper รับทำModเซิฟเวอร์เกมส์ รับเขียนModเซิฟเวอร์เกมส์ รับเขียนสคริปเกมส์ต่างๆ รับเขียนโปรแกรม" />
-    <meta name="keywords" content="รับเขียนสคริปเกมส์, รับเปิดเซิฟเกมส์, รับเขียนโปรแกรม, fivem, warz, arma3" />
-    <meta name="author" content="JubJubDev" />
-    <title>JubJub Developer</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="JubJubDeveloper รับทำModเซิฟเวอร์เกมส์ รับเขียนModเซิฟเวอร์เกมส์ รับเขียนสคริปเกมส์ต่างๆ รับเขียนโปรแกรม" />
+  <meta name="keywords" content="รับเขียนสคริปเกมส์, รับเปิดเซิฟเกมส์, รับเขียนโปรแกรม, fivem, warz, arma3" />
+  <meta name="author" content="JubJubDev" />
+  <title>JubJub Developer</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* ===== Custom Style สำหรับ Portfolio ===== */
+    .portfolio-section {
+      background-color: #f8f9fa;
+      padding: 80px 0;
+    }
+    .portfolio-image {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    }
+
+    .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    }
+
+    .social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    font-size: 18px;
+    color: white;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    }
+
+    .social-icon.facebook { background: #3b5998; }
+    .social-icon.github { background: #24292f; }
+    .social-icon.discord { background: #5865f2; }
+    .social-icon.youtube { background: #ff0000; }
+    .social-icon.email { background: #ff9900; }
+
+    .social-icon:hover {
+    transform: translateY(-3px);
+    opacity: 0.85;
+    }
+
+
+    .skill-badge {
+      display: inline-block;
+      background-color: #212529;
+      color: white;
+      border-radius: 20px;
+      padding: 5px 15px;
+      margin: 5px;
+      font-size: 0.9rem;
+    }
+
+    .scroll-icons {
+    overflow: hidden;
+    position: relative;
+    height: 80px; /* ความสูงของแถบเลื่อน */
+  }
+
+  .scroll-track {
+    display: flex;
+    gap: 15px;
+    position: absolute;
+    width: max-content;
+    animation: scroll-left 15s linear infinite;
+  }
+
+  .scroll-track img {
+    height: 64px;
+    width: auto;
+    border-radius: 6px;
+    object-fit: contain;
+  }
+
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  </style>
 </head>
+
 <body>
-    <!-- Header -->
-     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container px-4 px-lg-5" bis_skin_checked="1">
-                <a class="navbar-brand" href="#!">JubJub Developer</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent" bis_skin_checked="1">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    </ul>
-                    <form class="d-flex">
-                    </form>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
+    <div class="container px-4 px-lg-5">
+      <a class="navbar-brand fw-bold" href="#top">JubJub Developer</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="#top">หน้าแรก</a></li>
+          <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://www.facebook.com/BugErr0rJubJub/" target="_blank">ติดต่อ</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header id="top" class="bg-dark py-5">
+    <div class="container text-center text-white">
+      <h1 class="display-4 fw-bolder">JubJub Developer</h1>
+      <p class="lead fw-normal text-white-25 mb-0">รับเขียนเซิฟเวอร์เกมส์ / เขียนโปรแกรม / ระบบ Dev</p>
+      <p class="lead fw-normal text-white-50 mb-0">WebServer / GameServer / Project</p>
+    </div>
+  </header>
+
+  <!-- สินค้า Section -->
+  <section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+      <div id="product-list" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        <!-- สินค้าจะถูกเติมอัตโนมัติจาก scripts.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="portfolio-section text-center">
+    <div class="container">
+      <h2 class="fw-bold mb-4">💼 Portfolio ของ JubJub Developer</h2>
+      <img src="iam.jpg" alt="JubJub Developer" class="portfolio-image mb-4">
+      <h4 class="fw-bold">BuGErr0r JubJub</h4>
+      <p class="text-muted">Full Stack Game Developer & Web Programmer</p>
+
+        <!-- Social Links -->
+        <div class="social-links mt-3 mb-4">
+        <a href="https://www.facebook.com/BugErr0rJubJub" target="_blank" class="social-icon facebook" title="Facebook">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://github.com/BugErr0rJubJub" target="_blank" class="social-icon github" title="GitHub">
+            <i class="fab fa-github"></i>
+        </a>
+        <a href="https://discord.gg/xrh68H5" target="_blank" class="social-icon discord" title="Discord">
+            <i class="fab fa-discord"></i>
+        </a>
+        <a href="https://www.youtube.com/@BugErr0rJubJub" target="_blank" class="social-icon youtube" title="YouTube">
+            <i class="fab fa-youtube"></i>
+        </a>
+        </div>
+
+
+      <p class="mt-3 mb-4">
+        สวัสดีครับ ผมคือ <b>JubJub Developer</b> — นักพัฒนาเกมและเว็บไซต์อิสระ  
+        มีประสบการณ์ด้านการพัฒนาเซิร์ฟเวอร์เกม เช่น <b>Arma 3 / FiveM / WarZ</b>  
+        รวมถึงระบบ Web Backend, Database, และระบบเชื่อมต่อ API ระหว่างเกมกับเว็บ  
+        เน้นงานคุณภาพ ปลอดภัย และโค้ดสะอาด พร้อมให้คำปรึกษาเต็มรูปแบบ 💪
+      </p>
+
+      <h5 class="fw-bold mt-4 mb-3">🧠 ทักษะและความสามารถ</h5>
+      <div>
+        <span class="skill-badge">C++ / C# / VB / LUA / SQF</span>
+        <span class="skill-badge">PHP / JavaScript</span>
+        <span class="skill-badge">MySQL</span>
+        <span class="skill-badge">HTML / CSS / Bootstrap</span>
+        <span class="skill-badge">Game Server (Arma 3, FiveM, WarZ, etc)</span>
+        <span class="skill-badge">ระบบ Login / Database / Web API</span>
+        <span class="skill-badge">Security / Optimization</span>
+      </div>
+
+      <h5 class="fw-bold mt-5 mb-3">📂 ตัวอย่างผลงานที่ผ่านมา</h5>
+
+      <div class="row justify-content-center">
+        <!-- Card 1 -->
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+            <img src="arma3.jpg" class="card-img-top" alt="Project 1">
+            <div class="card-body">
+                <h6 class="fw-bold">Altis Life Server</h6>
+                <p class="text-muted small">ระบบ Roleplay เต็มรูปแบบ + Database Sync</p>
+                <div class="scroll-icons">
+                <div class="scroll-track">
+                    <img src="brg.jpg" alt="BangRaChan">
+                    <!-- <img src="armaicon.png" alt="Arma">
+                    <img src="cloud.png" alt="Cloud">
+                    <img src="mysql.png" alt="MySQL">
+                    <img src="database.png" alt="Database"> -->
+                    <!-- จะเพิ่มกี่รูปก็ได้ -->
+                </div>
                 </div>
             </div>
-        </nav>
-    <header class="bg-dark py-5">
-        <div class="container text-center text-white">
-            <h1 class="display-4 fw-bolder">JubJub Developer</h1>
-            <p class="lead fw-normal text-white-25 mb-0">รับเขียนเซิฟเวอร์เกมส์ / เขียนโปรแกรม / ระบบ Dev</p>
-            <p class="lead fw-normal text-white-50 mb-0">WebServer/GameServer/Project</p>
-        </div>
-    </header>
-
-    <!-- Section -->
-    <section class="py-5">
-        <div class="container px-4 px-lg-5 mt-5">
-            <div id="product-list" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                <!-- สินค้าจะถูกเติมอัตโนมัติจาก scripts.js -->
             </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="py-5 bg-dark">
-        <div class="container text-center text-white">
-            <p class="m-0">Copyright &copy; JubJub Developer 2025</p>
+        <!-- Card 2 -->
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+            <img src="FiveM.jpg" class="card-img-top" alt="Project 2">
+            <div class="card-body">
+                <h6 class="fw-bold">FiveM Roleplay System</h6>
+                <p class="text-muted small">ระบบอาชีพ / บ้าน / ยานพาหนะ / Job System</p>
+                <div class="scroll-icons">
+                <div class="scroll-track">
+                    <img src="gg.png" alt="GoodGame - 1 year 10 Months">
+                    <img src="state.png" alt="STATE NYC - 3 Months">
+                    <img src="ksls.png" alt="KSLS - 3 Months">
+                    <img src="flex.png" alt="flex - 5 Months">
+                    <img src="sp.png" alt="Sippinland - 5 Months">
+                    <img src="ct.png" alt="Cooltown - 8 Months">
+                    <img src="tsc.png" alt="TSC - 1 Months">
+                    <img src="ps.png" alt="ProSpeed - 1 Months">
+                    <img src="100+.png" alt="">
+                </div>
+                </div>
+            </div>
+            </div>
         </div>
-    </footer>
 
-    <!-- Bootstrap & Script -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="scripts.js"></script>
+        <!-- Card 3 -->
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+            <img src="php.png" class="card-img-top" alt="Project 3">
+            <div class="card-body">
+                <h6 class="fw-bold">Web Control Panel</h6>
+                <p class="text-muted small">หน้าเว็บจัดการระบบเกม / เชื่อมต่อฐานข้อมูล</p>
+                <div class="scroll-icons">
+                <div class="scroll-track">
+                    <img src="webarma3.png" alt="PHP">
+                    <img src="admin_arma3.png" alt="PHP">
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container text-center text-white">
+      <p class="m-0">Copyright &copy; JubJub Developer 2025</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="scripts.js"></script>
 </body>
 </html>

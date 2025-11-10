@@ -4,17 +4,17 @@ const products = [
     name: "SRC Infestation",
     price: "$500 - ฿15,000",
     image: "infes.jpg",
-    youtube: "https://www.youtube.com/embed/VIDEO_ID",
+    youtube: "https://www.youtube.com/embed/dpN75SDLT1Q",
     details: [
-      { text: "ระบบ Login / Register ครบถ้วน", img: "icon-login.png" },
-      { text: "ระบบ Database เชื่อมต่อแบบ Real-Time", img: "icon-database.png" },
-      { text: "รองรับระบบ Cash Shop และ Item Mall" },
-      { text: "มีระบบ Anti-Cheat ขั้นพื้นฐาน", img: "icon-shield.png" },
+      // { text: "ระบบ Login / Register ครบถ้วน", img: "icon-login.png" },
+      { text: "Survival / Boss Farm / Premium Room System" },
+      { text: "รองรับระบบ Clan / Ranking / PVP แข่งกับผู้เล่นอื่นได้อย่างสนุกสนาน" },
+      { text: "มีระบบ Anti-Cheat ขั้นพื้นฐาน" },
       { text: "สามารถปรับแต่ง Map / Event ได้" }
     ],
     includes: [
-      { text: "Source Code เต็มระบบ", img: "icon-code.png" },
-      { text: "คู่มือการติดตั้ง + ตั้งค่า", img: "icon-book.png" },
+      { text: "Source Code เต็มระบบ" },
+      { text: "คู่มือการติดตั้ง + ตั้งค่า" },
       { text: "ซัพพอร์ตหลังการขาย" }
     ]
   },
@@ -23,16 +23,18 @@ const products = [
     name: "SRC WarZTH",
     price: "$350 - ฿10,000",
     image: "infes.jpg",
-    youtube: "https://www.youtube.com/embed/VIDEO_ID2",
-     details: [
-      { text: "รองรับระบบ Clan / Ranking / PVP", img: "icon-pvp.png" },
-      { text: "ระบบ Item Drop และ AI Boss", img: "icon-ai.png" },
-      { text: "รองรับการปรับแต่ง UI และ Server Rate" }
+    youtube: "https://www.youtube.com/embed/vFIDswBLr9M",
+    details: [
+      // { text: "ระบบ Login / Register ครบถ้วน", img: "icon-login.png" },
+      { text: "Survival / Boss Farm / Premium Room System" },
+      { text: "รองรับระบบ Clan / Ranking / PVP แข่งกับผู้เล่นอื่นได้อย่างสนุกสนาน" },
+      { text: "มีระบบ Anti-Cheat ขั้นพื้นฐาน" },
+      { text: "สามารถปรับแต่ง Map / Event ได้" }
     ],
     includes: [
-      { text: "ไฟล์ Server + Client" },
-      { text: "พร้อม Database ตัวอย่าง" },
-      { text: "มีคู่มือการติดตั้ง" }
+      { text: "Source Code เต็มระบบ" },
+      { text: "คู่มือการติดตั้ง + ตั้งค่า" },
+      { text: "ซัพพอร์ตหลังการขาย" }
     ]
   },
   {
@@ -40,16 +42,15 @@ const products = [
     name: "SRC - Community",
     price: "$500 - ฿15,000",
     image: "FiveM.jpg",
-    youtube: "https://www.youtube.com/embed/VIDEO_ID3",
+    youtube: "https://www.youtube.com/embed/u51q7noN2TQ",
     details: [
-      { text: "รองรับ Roleplay System เต็มรูปแบบ", img: "icon-roleplay.png" },
-      { text: "ระบบ Economy + Job", img: "icon-economy.png" },
-      { text: "UI แบบ NUI Bootstrap 5" }
+      { text: "รองรับ Roleplay System เต็มรูปแบบ" },
+      { text: "ระบบ Economy + Job" },
     ],
     includes: [
-      { text: "Source Code เต็มระบบ", img: "icon-code.png" },
-      { text: "Database SQL", img: "icon-db.png" },
-      { text: "คู่มือติดตั้ง + สอนเบื้องต้น", img: "icon-book.png" }
+      { text: "Source Code เต็มระบบ" },
+      { text: "Database SQL" },
+      { text: "คู่มือติดตั้ง + สอนเบื้องต้น" }
     ]
   },
   {
@@ -57,16 +58,15 @@ const products = [
     name: "SRC - 4 School",
     price: "$500 - ฿15,000",
     image: "FiveM.jpg",
-    youtube: "https://www.youtube.com/embed/VIDEO_ID3",
+    youtube: "https://www.youtube.com/embed/u51q7noN2TQ",
     details: [
-      { text: "รองรับ Roleplay System เต็มรูปแบบ", img: "icon-roleplay.png" },
-      { text: "ระบบ Economy + Job", img: "icon-economy.png" },
-      { text: "UI แบบ NUI Bootstrap 5" }
+      { text: "รองรับ 4 School System เต็มรูปแบบ" },
+      { text: "ระบบ Economy + Job + Event" },
     ],
     includes: [
-      { text: "Source Code เต็มระบบ", img: "icon-code.png" },
-      { text: "Database SQL", img: "icon-db.png" },
-      { text: "คู่มือติดตั้ง + สอนเบื้องต้น", img: "icon-book.png" }
+      { text: "Source Code เต็มระบบ" },
+      { text: "Database SQL" },
+      { text: "คู่มือติดตั้ง + สอนเบื้องต้น" }
     ]
   },
   {
@@ -74,35 +74,69 @@ const products = [
     name: "Custom Source Code",
     price: "$30 - $300 / ฿1,000 - ฿5,000",
     image: "FiveM.jpg",
-    youtube: "https://www.youtube.com/embed/VIDEO_ID3",
+    youtube: "https://www.youtube.com/embed/XrV2qQefkrQ",
     details: [
-      { text: "รองรับ Roleplay System เต็มรูปแบบ", img: "icon-roleplay.png" },
-      { text: "ระบบ Economy + Job", img: "icon-economy.png" },
-      { text: "UI แบบ NUI Bootstrap 5" }
+      { text: "รองรับ System เต็มรูปแบบ" },
+      { text: "ระบบ Economy + Job + Event" },
     ],
     includes: [
-      { text: "Source Code เต็มระบบ", img: "icon-code.png" },
-      { text: "Database SQL", img: "icon-db.png" },
-      { text: "คู่มือติดตั้ง + สอนเบื้องต้น", img: "icon-book.png" }
+      { text: "Source Code เต็มระบบ" },
+      { text: "Database SQL" },
+      { text: "คู่มือติดตั้ง + สอนเบื้องต้น" }
     ]
   },
   {
     id: "altis",
-    name: "SRC - Altis Life",
+    name: "SRC - Altis Life Roleplay",
     price: "$350 - ฿10,000",
     image: "arma3.jpg",
     youtube: "https://www.youtube.com/embed/VIDEO_ID4",
     details: [
-      { text: "รองรับ Roleplay System เต็มรูปแบบ", img: "icon-roleplay.png" },
-      { text: "ระบบ Economy + Job", img: "icon-economy.png" },
-      { text: "UI แบบ NUI Bootstrap 5" }
+      { text: "รองรับ Roleplay System เต็มรูปแบบ" },
+      { text: "ระบบ Economy + Job" },
     ],
     includes: [
-      { text: "Source Code เต็มระบบ", img: "icon-code.png" },
-      { text: "Database SQL", img: "icon-db.png" },
-      { text: "คู่มือติดตั้ง + สอนเบื้องต้น", img: "icon-book.png" }
+      { text: "Source Code เต็มระบบ" },
+      { text: "Database SQL" },
+      { text: "คู่มือติดตั้ง + สอนเบื้องต้น" }
     ]
-  }
+  },
+  {
+    id: "altis",
+    name: "SRC - Altis Life PVE",
+    price: "$300 - ฿5000",
+    image: "arma3.jpg",
+    youtube: "https://www.youtube.com/embed/VIDEO_ID4",
+    details: [
+      { text: "รองรับ Co-op System เต็มรูปแบบ" },
+    ],
+    includes: [
+      { text: "Source Code เต็มระบบ" },
+      { text: "Database SQL" },
+      { text: "คู่มือติดตั้ง + สอนเบื้องต้น" }
+    ]
+  },
+  {
+    id: "php",
+    name: "Custom Web Control Panel",
+    price: "$100 - $300 / ฿3,000 - ฿5,000",
+    image: "php.png",
+    youtube: "https://www.youtube.com/embed/VIDEO_ID4",
+    details: [
+      { text: "เขียนโค้ด PHP อย่างปลอดภัย ป้องกัน SQL Injection, XSS, CSRF" },
+      { text: "โครงสร้างโค้ดสะอาด Backend/API" },
+      { text: "ระบบ Authentication/Authorization ปลอดภัย รองรับ Session และ Token" },
+      { text: "รองรับการเชื่อมต่อ Database แบบ Secure และใช้ Prepared Statements" },
+      { text: "ปรับแต่งระบบง่าย ต่อยอดระบบใหม่โดยไม่กระทบส่วนอื่น" }
+    ],
+    includes: [
+      { text: "Source Code PHP เต็มระบบ เขียนตามมาตรฐานความปลอดภัยและคุณภาพ" },
+      { text: "Database SQL ออกแบบปลอดภัย รองรับ Index / Constraint / Backup ง่าย" },
+      { text: "คู่มือการติดตั้งและสอนการปรับแต่งโค้ด ป้องกันข้อผิดพลาดที่พบบ่อย" },
+      { text: "ซัพพอร์ตหลังการขาย แนะนำ Best Practices และการป้องกันปัญหา Security" }
+    ]
+
+  },
 ];
 
 
@@ -146,7 +180,7 @@ products.forEach(p => {
               <div class="col-md-6">
                 <div class="ratio ratio-16x9 shadow-sm">
                   <iframe src="${p.youtube}" title="${p.name}" allowfullscreen></iframe>
-                </div>
+                  </div>
               </div>
 
               <!-- ขวา: รายละเอียด -->

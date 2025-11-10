@@ -90,7 +90,7 @@ const products = [
     name: "SRC - Altis Life Roleplay",
     price: "$350 - ฿10,000",
     image: "arma3.jpg",
-    youtube: "https://www.youtube.com/embed/VIDEO_ID4",
+    youtube: "https://www.youtube.com/embed/0ckeF0zlmms",
     details: [
       { text: "รองรับ Roleplay System เต็มรูปแบบ" },
       { text: "ระบบ Economy + Job" },
@@ -106,7 +106,7 @@ const products = [
     name: "SRC - Altis Life PVE",
     price: "$300 - ฿5000",
     image: "arma3.jpg",
-    youtube: "https://www.youtube.com/embed/VIDEO_ID4",
+    youtube: "https://www.youtube.com/embed/qX_z9RJ4w5w",
     details: [
       { text: "รองรับ Co-op System เต็มรูปแบบ" },
     ],
@@ -121,7 +121,7 @@ const products = [
     name: "Custom Web Control Panel",
     price: "$100 - $300 / ฿3,000 - ฿5,000",
     image: "php.png",
-    youtube: "https://www.youtube.com/embed/VIDEO_ID4",
+    youtube: "https://www.youtube.com/embed/1GuRfT5UtLQ",
     details: [
       { text: "เขียนโค้ด PHP อย่างปลอดภัย ป้องกัน SQL Injection, XSS, CSRF" },
       { text: "โครงสร้างโค้ดสะอาด Backend/API" },

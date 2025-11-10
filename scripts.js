@@ -1,7 +1,188 @@
-/*!
-* Start Bootstrap - Shop Homepage v5.0.6 (https://startbootstrap.com/template/shop-homepage)
-* Copyright 2013-2023 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-shop-homepage/blob/master/LICENSE)
-*/
-// This file is intentionally blank
-// Use this file to add JavaScript to your project
+const products = [
+  {
+    id: "infes",
+    name: "SRC Infestation",
+    price: "$500 - ฿15,000",
+    image: "infes.jpg",
+    youtube: "https://www.youtube.com/embed/VIDEO_ID",
+    details: [
+      { text: "ระบบ Login / Register ครบถ้วน", img: "icon-login.png" },
+      { text: "ระบบ Database เชื่อมต่อแบบ Real-Time", img: "icon-database.png" },
+      { text: "รองรับระบบ Cash Shop และ Item Mall" },
+      { text: "มีระบบ Anti-Cheat ขั้นพื้นฐาน", img: "icon-shield.png" },
+      { text: "สามารถปรับแต่ง Map / Event ได้" }
+    ],
+    includes: [
+      { text: "Source Code เต็มระบบ", img: "icon-code.png" },
+      { text: "คู่มือการติดตั้ง + ตั้งค่า", img: "icon-book.png" },
+      { text: "ซัพพอร์ตหลังการขาย" }
+    ]
+  },
+  {
+    id: "warzth",
+    name: "SRC WarZTH",
+    price: "$350 - ฿10,000",
+    image: "infes.jpg",
+    youtube: "https://www.youtube.com/embed/VIDEO_ID2",
+     details: [
+      { text: "รองรับระบบ Clan / Ranking / PVP", img: "icon-pvp.png" },
+      { text: "ระบบ Item Drop และ AI Boss", img: "icon-ai.png" },
+      { text: "รองรับการปรับแต่ง UI และ Server Rate" }
+    ],
+    includes: [
+      { text: "ไฟล์ Server + Client" },
+      { text: "พร้อม Database ตัวอย่าง" },
+      { text: "มีคู่มือการติดตั้ง" }
+    ]
+  },
+  {
+    id: "fivem",
+    name: "SRC - Community",
+    price: "$500 - ฿15,000",
+    image: "FiveM.jpg",
+    youtube: "https://www.youtube.com/embed/VIDEO_ID3",
+    details: [
+      { text: "รองรับ Roleplay System เต็มรูปแบบ", img: "icon-roleplay.png" },
+      { text: "ระบบ Economy + Job", img: "icon-economy.png" },
+      { text: "UI แบบ NUI Bootstrap 5" }
+    ],
+    includes: [
+      { text: "Source Code เต็มระบบ", img: "icon-code.png" },
+      { text: "Database SQL", img: "icon-db.png" },
+      { text: "คู่มือติดตั้ง + สอนเบื้องต้น", img: "icon-book.png" }
+    ]
+  },
+  {
+    id: "fivem",
+    name: "SRC - 4 School",
+    price: "$500 - ฿15,000",
+    image: "FiveM.jpg",
+    youtube: "https://www.youtube.com/embed/VIDEO_ID3",
+    details: [
+      { text: "รองรับ Roleplay System เต็มรูปแบบ", img: "icon-roleplay.png" },
+      { text: "ระบบ Economy + Job", img: "icon-economy.png" },
+      { text: "UI แบบ NUI Bootstrap 5" }
+    ],
+    includes: [
+      { text: "Source Code เต็มระบบ", img: "icon-code.png" },
+      { text: "Database SQL", img: "icon-db.png" },
+      { text: "คู่มือติดตั้ง + สอนเบื้องต้น", img: "icon-book.png" }
+    ]
+  },
+  {
+    id: "fivem",
+    name: "Custom Source Code",
+    price: "$30 - $300 / ฿1,000 - ฿5,000",
+    image: "FiveM.jpg",
+    youtube: "https://www.youtube.com/embed/VIDEO_ID3",
+    details: [
+      { text: "รองรับ Roleplay System เต็มรูปแบบ", img: "icon-roleplay.png" },
+      { text: "ระบบ Economy + Job", img: "icon-economy.png" },
+      { text: "UI แบบ NUI Bootstrap 5" }
+    ],
+    includes: [
+      { text: "Source Code เต็มระบบ", img: "icon-code.png" },
+      { text: "Database SQL", img: "icon-db.png" },
+      { text: "คู่มือติดตั้ง + สอนเบื้องต้น", img: "icon-book.png" }
+    ]
+  },
+  {
+    id: "altis",
+    name: "SRC - Altis Life",
+    price: "$350 - ฿10,000",
+    image: "arma3.jpg",
+    youtube: "https://www.youtube.com/embed/VIDEO_ID4",
+    details: [
+      { text: "รองรับ Roleplay System เต็มรูปแบบ", img: "icon-roleplay.png" },
+      { text: "ระบบ Economy + Job", img: "icon-economy.png" },
+      { text: "UI แบบ NUI Bootstrap 5" }
+    ],
+    includes: [
+      { text: "Source Code เต็มระบบ", img: "icon-code.png" },
+      { text: "Database SQL", img: "icon-db.png" },
+      { text: "คู่มือติดตั้ง + สอนเบื้องต้น", img: "icon-book.png" }
+    ]
+  }
+];
+
+
+// ดึง container หลัก
+const container = document.getElementById("product-list");
+
+// loop สร้างสินค้า
+products.forEach(p => {
+  const card = document.createElement("div");
+  card.className = "col mb-5";
+  card.innerHTML = `
+    <div class="card h-100 shadow-sm">
+      <img class="card-img-top" src="${p.image}" alt="${p.name}" />
+      <div class="card-body p-4 text-center">
+        <h5 class="fw-bolder">${p.name}</h5>
+        ${p.price}
+      </div>
+      <div class="card-footer bg-transparent text-center border-top-0 p-3">
+        <a class="btn btn-outline-dark me-2" href="https://www.facebook.com/BugErr0rJubJub/" target="_blank">ติดต่อ</a>
+        <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modal-${p.id}">รายละเอียด</button>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal-${p.id}" tabindex="-1" aria-labelledby="modalLabel-${p.id}" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+          <div class="modal-header bg-dark text-white">
+            <h5 class="modal-title" id="modalLabel-${p.id}">${p.name}</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <!-- รูปภาพด้านบน -->
+            <div class="text-center mb-4">
+              <img src="${p.image}" class="img-fluid rounded shadow-sm" alt="${p.name}">
+            </div>
+
+            <!-- แบ่งคอลัมน์ ซ้าย/ขวา -->
+            <div class="row g-4">
+              <!-- ซ้าย: YouTube -->
+              <div class="col-md-6">
+                <div class="ratio ratio-16x9 shadow-sm">
+                  <iframe src="${p.youtube}" title="${p.name}" allowfullscreen></iframe>
+                </div>
+              </div>
+
+              <!-- ขวา: รายละเอียด -->
+              <div class="col-md-6">
+                <h5>รายละเอียดสินค้า</h5>
+                <ul>
+                  ${p.details.map(d => `
+                    <li class="d-flex align-items-start mb-2">
+                      ${d.img ? `<img src="${d.img}" alt="" class="me-2" style="width:24px;height:24px;object-fit:contain;">` : ""}
+                      <span>${d.text}</span>
+                    </li>`).join("")}
+                </ul>
+
+                <h5 class="mt-3">สิ่งที่คุณจะได้รับ</h5>
+                <ul>
+                  ${p.includes.map(i => `
+                    <li class="d-flex align-items-start mb-2">
+                      ${i.img ? `<img src="${i.img}" alt="" class="me-2" style="width:24px;height:24px;object-fit:contain;">` : ""}
+                      <span>${i.text}</span>
+                    </li>`).join("")}
+                </ul>
+
+                <div class="text-end fw-bold mt-3">ราคา: ${p.price}</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <a href="https://www.facebook.com/BugErr0rJubJub/" target="_blank" class="btn btn-outline-dark">
+              ติดต่อเพื่อสั่งซื้อ
+            </a>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  container.appendChild(card);
+});

@@ -220,3 +220,15 @@ products.forEach(p => {
   `;
   container.appendChild(card);
 });
+
+
+// ดึงทุกรูปใน scroll-track
+document.querySelectorAll('.scroll-track img').forEach(img => {
+  img.addEventListener('click', () => {
+    const src = img.getAttribute('src');          // ดึง src ของรูปที่คลิก
+    const modalImg = document.getElementById('scrollModalImage');
+    modalImg.src = src;                            // ใส่ src เข้า modal
+    const scrollModal = new bootstrap.Modal(document.getElementById('scrollImageModal'));
+    scrollModal.show();                            // เปิด modal
+  });
+});

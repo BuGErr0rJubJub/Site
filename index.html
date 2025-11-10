@@ -87,6 +87,15 @@
     object-fit: contain;
   }
 
+  .scroll-track img {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.scroll-track img:hover {
+  transform: scale(1.1);
+}
+
+
   @keyframes scroll-left {
     0% {
       transform: translateX(100%);
@@ -246,6 +255,21 @@
 
     </div>
   </section>
+
+  <!-- Modal แสดงรูปใหญ่ -->
+<div class="modal fade" id="scrollImageModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-transparent border-0">
+      <div class="modal-body p-0 text-center">
+        <img id="scrollModalImage" src="" class="img-fluid rounded shadow-sm" alt="Preview">
+      </div>
+      <div class="modal-footer justify-content-center border-0">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
   <!-- Footer -->
   <footer class="py-5 bg-dark">

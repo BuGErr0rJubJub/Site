@@ -1,6 +1,6 @@
 const products = [
   {
-    id: "infes",
+    id: "infes1",
     name: "SRC Infestation",
     price: "$500 - ฿15,000",
     image: "infes.jpg",
@@ -38,7 +38,7 @@ const products = [
     ]
   },
   {
-    id: "fivem",
+    id: "fivem1",
     name: "SRC - Community",
     price: "$500 - ฿15,000",
     image: "FiveM.jpg",
@@ -54,7 +54,7 @@ const products = [
     ]
   },
   {
-    id: "fivem",
+    id: "fivem2",
     name: "SRC - 4 School",
     price: "$500 - ฿15,000",
     image: "FiveM.jpg",
@@ -70,7 +70,7 @@ const products = [
     ]
   },
   {
-    id: "fivem",
+    id: "fivem3",
     name: "Custom Source Code",
     price: "$30 - $300 / ฿1,000 - ฿5,000",
     image: "FiveM.jpg",
@@ -86,7 +86,7 @@ const products = [
     ]
   },
   {
-    id: "altis",
+    id: "altis1",
     name: "SRC - Altis Life Roleplay",
     price: "$350 - ฿10,000",
     image: "arma3.jpg",
@@ -102,7 +102,7 @@ const products = [
     ]
   },
   {
-    id: "altis",
+    id: "altis2",
     name: "SRC - Altis Life PVE",
     price: "$300 - ฿5000",
     image: "arma3.jpg",

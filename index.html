@@ -298,34 +298,28 @@
 <script>
   
   document.addEventListener('DOMContentLoaded', function() {
-    // ระบุชื่อไฟล์ที่มีอยู่ใน Server ของคุณ
-    const warzFiles = ['WarZ_CTS.txt', 'WarZ_POLARZ.txt', 'WarZ_TREX.txt'];
+    // กรอกแค่ชื่อ ไม่ต้องมี .txt
+    const warzProjects = ['WarZ_CTS', 'WarZ_POLARZ', 'WarZ_TREX'];
     const tableBody = document.getElementById('warzTableBody');
 
-    // ฟังก์ชันคำนวณส่วนต่างของวัน
     function getDaysLeft(expiryStr) {
         const expiryDate = new Date(expiryStr);
         const today = new Date();
-        
-        // Reset เวลาให้เป็น 00:00:00 เพื่อคำนวณแค่วันที่
         today.setHours(0, 0, 0, 0);
         expiryDate.setHours(0, 0, 0, 0);
-
         const diffTime = expiryDate - today;
         return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     }
 
-    // ฟังก์ชันดึงข้อมูลและสร้างตาราง
     async function updateWarZTable() {
-        tableBody.innerHTML = '<tr><td colspan="3" class="text-center py-4">กำลังค้นหาและดึงข้อมูลไฟล์...</td></tr>';
-        
+        tableBody.innerHTML = '<tr><td colspan="3" class="text-center py-4">กำลังดึงข้อมูล...</td></tr>';
         let hasData = false;
         let rowsHtml = '';
 
-        for (const fileName of warzFiles) {
+        for (const projectName of warzProjects) {
             try {
-                // ดึงข้อมูลจากไฟล์ (เติม Query String เพื่อป้องกัน Browser Cache)
-                const response = await fetch(fileName + '?cache=' + Date.now());
+                // เติม .txt ตอน fetch
+                const response = await fetch(projectName + '.txt?cache=' + Date.now());
                 if (!response.ok) continue;
 
                 const text = await response.text();
@@ -333,17 +327,18 @@
 
                 if (cleanData.includes('|')) {
                     const parts = cleanData.split('|');
-                    const dateLimit = parts[0]; // 2026-04-28
-                    const daysLeft = getDaysLeft(dateLimit);
+                    const daysLeft = getDaysLeft(parts[0]);
 
-                    // กำหนดสีตามสถานะ
-                    let badgeClass = 'bg-success'; // ปกติ (เขียว)
-                    if (daysLeft <= 7) badgeClass = 'bg-warning text-dark'; // ใกล้หมด (เหลือง)
-                    if (daysLeft <= 0) badgeClass = 'bg-danger'; // หมดแล้ว (แดง)
+                    let badgeClass = 'bg-success';
+                    if (daysLeft <= 7) badgeClass = 'bg-warning text-dark';
+                    if (daysLeft <= 0) badgeClass = 'bg-danger';
 
                     rowsHtml += `
                         <tr>
-                            <td class="fw-bold"><i class="fa-regular fa-file-code me-2 text-secondary"></i>${fileName}</td>
+                            <td class="fw-bold">
+                                <i class="fa-regular fa-file-code me-2 text-secondary"></i>
+                                ${projectName}
+                            </td>
                             <td><code class="small text-muted bg-light p-1 rounded">${cleanData}</code></td>
                             <td class="text-center">
                                 <div class="badge ${badgeClass} shadow-sm" style="min-width: 100px; padding: 0.6em;">
@@ -355,18 +350,12 @@
                     hasData = true;
                 }
             } catch (err) {
-                console.error("Error loading " + fileName, err);
+                console.error("Error loading " + projectName, err);
             }
         }
-
-        if (!hasData) {
-            tableBody.innerHTML = '<tr><td colspan="3" class="text-center py-4 text-muted">ไม่พบข้อมูลไฟล์ระบบในขณะนี้</td></tr>';
-        } else {
-            tableBody.innerHTML = rowsHtml;
-        }
+        tableBody.innerHTML = hasData ? rowsHtml : '<tr><td colspan="3" class="text-center py-4 text-muted">ไม่พบข้อมูล</td></tr>';
     }
 
-    // สั่งให้ทำงานเมื่อมีการกดเปิด Modal
     const myModal = document.getElementById('warzExpiryModal');
     myModal.addEventListener('show.bs.modal', updateWarZTable);
 });

@@ -119,6 +119,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item"><a class="nav-link active" href="#top">หน้าแรก</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#expiryCheckerModal">
+            <i class="fa-solid fa-clock-rotate-left"></i> ตรวจสอบอายุ
+          </a>
+        </li>
           <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
           <li class="nav-item"><a class="nav-link" href="https://www.facebook.com/BugErr0rJubJub/" target="_blank">ติดต่อ</a></li>
         </ul>
@@ -256,6 +260,87 @@
     </div>
   </section>
 
+  <div class="modal fade" id="expiryCheckerModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold">🔍 ตรวจสอบอายุการใช้งาน (WarZ)</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label class="form-label">เลือกโปรเจกต์ที่ต้องการตรวจสอบ:</label>
+          <select id="fileSelector" class="form-select">
+            <option value="">-- กรุณาเลือกไฟล์ --</option>
+            <option value="WarZ_CTS.txt">WarZ_CTS.txt (อัปเดต 2 สัปดาห์ก่อน)</option>
+            <option value="WarZ_POLARZ.txt">WarZ_POLARZ.txt (อัปเดต 4 วันก่อน)</option>
+            <option value="WarZ_TREX.txt">WarZ_TREX.txt (อัปเดต 6 ชั่วโมงก่อน)</option>
+          </select>
+        </div>
+        
+        <div id="expiryResult" class="mt-4 d-none">
+          <div class="card bg-light border-0 shadow-sm">
+            <div class="card-body text-center">
+              <h6 class="text-muted mb-2">ข้อมูลล่าสุดในไฟล์</h6>
+              <p id="rawContent" class="badge bg-dark mb-3" style="font-size: 0.9rem;"></p>
+              <hr>
+              <h4 id="daysLeftText" class="fw-bold"></h4>
+              <small id="expiryDateLabel" class="text-secondary"></small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const fileSelector = document.getElementById('fileSelector');
+    const expiryResult = document.getElementById('expiryResult');
+    const rawContent = document.getElementById('rawContent');
+    const daysLeftText = document.getElementById('daysLeftText');
+    const expiryDateLabel = document.getElementById('expiryDateLabel');
+
+    // จำลองข้อมูลที่ดึงมาจากไฟล์ (ในอนาคตคุณสามารถใช้ fetch() ดึงจาก server ได้)
+    const mockFileData = {
+        "WarZ_CTS.txt": "2026-04-10|A9D18C54|103.233.195.162",
+        "WarZ_POLARZ.txt": "2026-04-28|A9D18C54|103.233.195.162",
+        "WarZ_TREX.txt": "2026-05-15|A9D18C54|103.233.195.162"
+    };
+
+    fileSelector.addEventListener('change', function() {
+        const fileName = this.value;
+        if (fileName && mockFileData[fileName]) {
+            const dataLine = mockFileData[fileName];
+            const datePart = dataLine.split('|')[0]; // ดึง "2026-04-28"
+            
+            // คำนวณวันที่
+            const expiryDate = new Date(datePart);
+            const today = new Date(); // วันนี้ 2026-03-31
+            
+            // คำนวณความต่าง (Milliseconds -> Days)
+            const diffTime = expiryDate - today;
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+            // แสดงผล
+            rawContent.innerText = dataLine;
+            expiryDateLabel.innerText = `วันหมดอายุ: ${datePart}`;
+            
+            if (diffDays > 0) {
+                daysLeftText.innerHTML = `<span class="text-success">เหลืออีก ${diffDays} วัน</span>`;
+            } else if (diffDays === 0) {
+                daysLeftText.innerHTML = `<span class="text-warning">หมดอายุวันนี้!</span>`;
+            } else {
+                daysLeftText.innerHTML = `<span class="text-danger">หมดอายุแล้ว ${Math.abs(diffDays)} วัน</span>`;
+            }
+
+            expiryResult.classList.remove('d-none');
+        } else {
+            expiryResult.classList.add('d-none');
+        }
+    });
+});
+</script>
   <!-- Modal แสดงรูปใหญ่ -->
 <div class="modal fade" id="scrollImageModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">

@@ -3,7 +3,7 @@
   "status": "active",
   "meta": {
     "expiry": "2026-12-31",
-    "crc_check": "AABBCCDD",
+    "crc_check": "B6F06255",
     "endpoint": "1.2.3.4"
   }
 }

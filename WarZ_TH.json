@@ -1,0 +1,9 @@
+{
+  "auth_token": "aG9sb3dvcmxk",
+  "status": "active",
+  "meta": {
+    "expiry": "2026-12-31",
+    "crc_check": "AABBCCDD",
+    "endpoint": "1.2.3.4"
+  }
+}

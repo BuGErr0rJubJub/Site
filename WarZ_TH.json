@@ -1,9 +1,9 @@
 {
-  "auth_token": "aG9sb3dvcmxk",
+  "auth_token": "OUxpNHl6NjF3SC9VTW44Y3NSYWxlUT09",
   "status": "active",
   "meta": {
     "expiry": "2026-04-26 03:25:00",
     "crc_check": "B6F06255",
-    "endpoint": "1.2.3.4"
+    "endpoint": "127.0.0.1"
   }
 }

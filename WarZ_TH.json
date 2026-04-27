@@ -1,9 +1,7 @@
 {
   "auth_token": "54TPJ2HKUIRGrKGCq991wg==",
   "status": "active",
-  "meta": {
-    "expiry": "2026-04-26 03:25:00",
-    "crc_check": "B6F06255",
-    "endpoint": "223.205.239.113"
-  }
+  "expiry": "2026-12-31 23:59:59",
+  "crc_check": "B6F06255",
+  "endpoint": "223.205.239.113"
 }

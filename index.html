@@ -330,16 +330,15 @@
         </div>
     </div>
 </div>
-  
-<script>
-  
+  <script>
   document.addEventListener('DOMContentLoaded', function() {
-    // กรอกแค่ชื่อ ไม่ต้องมี .txt
+    // กรอกชื่อไฟล์ (ไม่ต้องใส่ .json)
     const warzProjects = ['WarZ_SIAM'];
     const tableBody = document.getElementById('warzTableBody');
 
     function getDaysLeft(expiryStr) {
-        const expiryDate = new Date(expiryStr);
+        // รองรับรูปแบบวันที่ "YYYY-MM-DD HH:mm:ss" จาก JSON
+        const expiryDate = new Date(expiryStr.replace(/-/g, '/')); 
         const today = new Date();
         today.setHours(0, 0, 0, 0);
         expiryDate.setHours(0, 0, 0, 0);
@@ -354,20 +353,23 @@
 
         for (const projectName of warzProjects) {
             try {
-                // เติม .txt ตอน fetch
+                // Fetch ไฟล์ JSON
                 const response = await fetch(projectName + '.json?cache=' + Date.now());
                 if (!response.ok) continue;
 
-                const text = await response.text();
-                const cleanData = text.trim();
+                // เปลี่ยนจากการอ่าน .text() เป็น .json()
+                const data = await response.json();
 
-                if (cleanData.includes('|')) {
-                    const parts = cleanData.split('|');
-                    const daysLeft = getDaysLeft(parts[0]);
+                // ตรวจสอบว่ามี field 'expiry' และ 'status' อยู่ใน JSON หรือไม่
+                if (data && data.expiry) {
+                    const daysLeft = getDaysLeft(data.expiry);
 
                     let badgeClass = 'bg-success';
                     if (daysLeft <= 7) badgeClass = 'bg-warning text-dark';
-                    if (daysLeft <= 0) badgeClass = 'bg-danger';
+                    if (daysLeft <= 0 || data.status !== 'active') badgeClass = 'bg-danger';
+
+                    // แสดงข้อมูล Endpoint หรือ Token เล็กๆ ในคอลัมน์กลางเพื่อความสวยงาม
+                    const displayInfo = `Status: ${data.status}<br><small class="text-muted">IP: ${data.endpoint || '-'}</small>`;
 
                     rowsHtml += `
                         <tr>
@@ -375,7 +377,7 @@
                                 <i class="fa-regular fa-file-code me-2 text-secondary"></i>
                                 ${projectName}
                             </td>
-                            <td><code class="small text-muted bg-light p-1 rounded">${cleanData}</code></td>
+                            <td><code class="small bg-light p-1 rounded">${displayInfo}</code></td>
                             <td class="text-center">
                                 <div class="badge ${badgeClass} shadow-sm" style="min-width: 100px; padding: 0.6em;">
                                     <i class="fa-solid fa-calendar-day me-1"></i>
@@ -393,9 +395,10 @@
     }
 
     const myModal = document.getElementById('warzExpiryModal');
-    myModal.addEventListener('show.bs.modal', updateWarZTable);
+    if (myModal) {
+        myModal.addEventListener('show.bs.modal', updateWarZTable);
+    }
 });
-  
 </script>
   <!-- Modal แสดงรูปใหญ่ -->
 <div class="modal fade" id="scrollImageModal" tabindex="-1" aria-hidden="true">

@@ -323,7 +323,7 @@
             </div>
             <div class="modal-footer bg-light">
                 <div class="me-auto">
-                    <small class="text-muted italic">ระบบจะคำนวณวันหมดอายุอัตโนมัติจากไฟล์ .txt</small>
+                    <small class="text-muted italic">ระบบจะคำนวณวันหมดอายุอัตโนมัติจากไฟล์</small>
                 </div>
                 <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">ปิดหน้าต่าง</button>
             </div>
@@ -335,7 +335,7 @@
   
   document.addEventListener('DOMContentLoaded', function() {
     // กรอกแค่ชื่อ ไม่ต้องมี .txt
-    const warzProjects = ['WarZ_CTS', 'WarZ_POLARZ', 'WarZ_TREX'];
+    const warzProjects = ['WarZ_SIAM'];
     const tableBody = document.getElementById('warzTableBody');
 
     function getDaysLeft(expiryStr) {
@@ -355,7 +355,7 @@
         for (const projectName of warzProjects) {
             try {
                 // เติม .txt ตอน fetch
-                const response = await fetch(projectName + '.txt?cache=' + Date.now());
+                const response = await fetch(projectName + '.json?cache=' + Date.now());
                 if (!response.ok) continue;
 
                 const text = await response.text();

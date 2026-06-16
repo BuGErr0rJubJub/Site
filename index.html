@@ -6,114 +6,223 @@
   <meta name="description" content="JubJubDeveloper รับทำModเซิฟเวอร์เกมส์ รับเขียนModเซิฟเวอร์เกมส์ รับเขียนสคริปเกมส์ต่างๆ รับเขียนโปรแกรม" />
   <meta name="keywords" content="รับเขียนสคริปเกมส์, รับเปิดเซิฟเกมส์, รับเขียนโปรแกรม, fivem, warz, arma3" />
   <meta name="author" content="JubJubDev" />
-  <title>JubJub Developer</title>
+  <title>JubJub Developer | Professional Game & Web Dev</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  
   <style>
-    /* ===== Custom Style สำหรับ Portfolio ===== */
+    :root {
+      --primary-color: #6366f1;
+      --secondary-color: #a855f7;
+      --dark-bg: #0f172a;
+      --dark-card: #1e293b;
+      --accent-color: #22d3ee;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    body {
+      font-family: 'Kanit', sans-serif;
+      background-color: var(--dark-bg);
+      color: var(--text-main);
+      overflow-x: hidden;
+    }
+
+    /* --- Background Animation --- */
+    .bg-glow {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: -1;
+      background: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #0f172a 100%);
+    }
+    .bg-glow::after {
+      content: "";
+      position: absolute;
+      top: -50%; left: -50%; width: 200%; height: 200%;
+      background: conic-gradient(from 0deg, transparent, var(--primary-color), transparent 30%);
+      animation: rotate 10s linear infinite;
+      opacity: 0.1;
+      z-index: -1;
+    }
+    @keyframes rotate { 100% { transform: rotate(360deg); } }
+
+    /* --- Navbar --- */
+    .navbar {
+      background: rgba(15, 23, 42, 0.8) !important;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .navbar-brand {
+      font-weight: 800;
+      background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 1.5rem;
+    }
+    .nav-link {
+      color: var(--text-muted) !important;
+      transition: 0.3s;
+      font-weight: 400;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--accent-color) !important;
+      transform: translateY(-2px);
+    }
+
+    /* --- Header --- */
+    header {
+      padding: 120px 0 80px;
+      background: transparent;
+    }
+    .hero-title {
+      font-size: 4rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      background: linear-gradient(to bottom, #fff 0%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-subtitle {
+      color: var(--accent-color);
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+    }
+
+    /* --- Product Section --- */
+    #product-list .card {
+      background: var(--dark-card);
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: 0.3s ease;
+      color: white;
+    }
+    #product-list .card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary-color);
+      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+    }
+
+    /* --- Portfolio --- */
     .portfolio-section {
-      background-color: #f8f9fa;
-      padding: 80px 0;
+      background: rgba(30, 41, 59, 0.5);
+      border-radius: 50px 50px 0 0;
+      padding: 100px 0;
+      margin-top: 50px;
     }
     .portfolio-image {
-      width: 180px;
-      height: 180px;
+      width: 200px; height: 200px;
       border-radius: 50%;
       object-fit: cover;
-      box-shadow: 0 0 10px rgba(0,0,0,0.15);
+      border: 4px solid var(--primary-color);
+      box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+      transition: 0.5s;
     }
-
-    .social-links {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    }
+    .portfolio-image:hover { transform: rotate(5deg) scale(1.05); }
 
     .social-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    font-size: 18px;
-    color: white;
-    transition: all 0.3s ease;
-    text-decoration: none;
+      width: 45px; height: 45px;
+      border-radius: 12px;
+      display: inline-flex; align-items: center; justify-content: center;
+      color: white; transition: 0.3s; text-decoration: none;
+      font-size: 20px;
     }
-
-    .social-icon.facebook { background: #3b5998; }
-    .social-icon.github { background: #24292f; }
-    .social-icon.discord { background: #5865f2; }
-    .social-icon.youtube { background: #ff0000; }
-    .social-icon.email { background: #ff9900; }
-
-    .social-icon:hover {
-    transform: translateY(-3px);
-    opacity: 0.85;
-    }
-
+    .social-icon:hover { transform: translateY(-5px); filter: brightness(1.2); }
+    .facebook { background: #1877F2; }
+    .github { background: #333; }
+    .discord { background: #5865f2; }
+    .youtube { background: #FF0000; }
 
     .skill-badge {
-      display: inline-block;
-      background-color: #212529;
-      color: white;
-      border-radius: 20px;
-      padding: 5px 15px;
+      background: rgba(99, 102, 241, 0.1);
+      border: 1px solid var(--primary-color);
+      color: var(--accent-color);
+      padding: 6px 16px;
+      border-radius: 50px;
       margin: 5px;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
+      display: inline-block;
+      transition: 0.3s;
+    }
+    .skill-badge:hover {
+      background: var(--primary-color);
+      color: white;
     }
 
+    /* --- Project Cards --- */
+    .project-card {
+      background: var(--dark-card);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+      border-color: var(--secondary-color);
+    }
+    .project-card img {
+      transition: 0.5s;
+      height: 200px;
+      object-fit: cover;
+    }
+    .project-card:hover img { transform: scale(1.1); }
+
+    /* --- Scroll Icons --- */
     .scroll-icons {
-    overflow: hidden;
-    position: relative;
-    height: 80px; /* ความสูงของแถบเลื่อน */
-  }
-
-  .scroll-track {
-    display: flex;
-    gap: 15px;
-    position: absolute;
-    width: max-content;
-    animation: scroll-left 15s linear infinite;
-  }
-
-  .scroll-track img {
-    height: 64px;
-    width: auto;
-    border-radius: 6px;
-    object-fit: contain;
-  }
-
-  .scroll-track img {
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-.scroll-track img:hover {
-  transform: scale(1.1);
-}
-
-
-  @keyframes scroll-left {
-    0% {
-      transform: translateX(100%);
+      overflow: hidden;
+      position: relative;
+      height: 60px;
+      mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
     }
-    100% {
-      transform: translateX(-100%);
+    .scroll-track {
+      display: flex; gap: 15px;
+      width: max-content;
+      animation: scroll-left 20s linear infinite;
     }
-  }
+    .scroll-track img {
+      height: 45px; border-radius: 8px;
+      transition: 0.3s; cursor: pointer;
+    }
+    .scroll-track img:hover { transform: scale(1.2); }
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* --- Modal System Status --- */
+    .modal-content {
+      background: var(--dark-bg);
+      color: white;
+      border: 1px solid var(--primary-color);
+    }
+    .modal-header {
+      background: linear-gradient(to right, #1e1b4b, #312e81);
+      color: white;
+    }
+    .table { color: var(--text-main); }
+    .table thead { background: #1e293b; color: var(--accent-color); }
+    .status-badge {
+      font-family: 'JetBrains Mono', monospace;
+      padding: 6px 12px;
+      border-radius: 6px;
+    }
+
+    footer {
+      background: #020617;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
   </style>
 </head>
-
 <body>
+  <div class="bg-glow"></div>
+
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow-lg">
     <div class="container px-4 px-lg-5">
-      <a class="navbar-brand fw-bold" href="#top">JubJub Developer</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand" href="#top">JubJub Developer</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -121,25 +230,32 @@
           <li class="nav-item"><a class="nav-link active" href="#top">หน้าแรก</a></li>
           <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#warzExpiryModal">PGG DB</a></li>
           <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
-          <li class="nav-item"><a class="nav-link" href="https://www.facebook.com/BugErr0rJubJub/" target="_blank">ติดต่อ</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://www.facebook.com/BugErr0rJubJub/" target="_blank"><i class="fa-solid fa-envelope me-1"></i> ติดต่อ</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
   <!-- Header -->
-  <header id="top" class="bg-dark py-5">
-    <div class="container text-center text-white">
-      <h1 class="display-4 fw-bolder">JubJub Developer</h1>
-      <p class="lead fw-normal text-white-25 mb-0">รับเขียนเซิฟเวอร์เกมส์ / เขียนโปรแกรม / ระบบ Dev</p>
-      <p class="lead fw-normal text-white-50 mb-0">WebServer / GameServer / Project</p>
+  <header id="top" class="text-center">
+    <div class="container">
+      <h1 class="display-3 hero-title fw-bolder mb-3">JubJub Developer</h1>
+      <p class="lead hero-subtitle mb-2">รับเขียนเซิฟเวอร์เกมส์ / เขียนโปรแกรม / ระบบ Dev</p>
+      <p class="lead text-white-50 opacity-75">WebServer / GameServer / Custom Project</p>
+      <div class="mt-4">
+        <a href="#portfolio" class="btn btn-primary btn-lg px-4 shadow-lg" style="background: var(--primary-color); border: none;">ดูผลงานของผม</a>
+      </div>
     </div>
   </header>
 
   <!-- สินค้า Section -->
   <section class="py-5">
-    <div class="container px-4 px-lg-5 mt-5">
-      <div id="product-list" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+    <div class="container px-4 px-lg-5">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold text-white">🛠️ บริการของเรา</h2>
+        <div class="mx-auto" style="width: 60px; height: 4px; background: var(--accent-color); border-radius: 2px;"></div>
+      </div>
+      <div id="product-list" class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-3 row-cols-xl-4 justify-content-center">
         <!-- สินค้าจะถูกเติมอัตโนมัติจาก scripts.js -->
       </div>
     </div>
@@ -148,37 +264,35 @@
   <!-- Portfolio Section -->
   <section id="portfolio" class="portfolio-section text-center">
     <div class="container">
-      <h2 class="fw-bold mb-4">💼 Portfolio ของ JubJub Developer</h2>
-      <img src="iam.jpg" alt="JubJub Developer" class="portfolio-image mb-4">
-      <h4 class="fw-bold">BuGErr0r JubJub</h4>
-      <p class="text-muted">Full Stack Game Developer & Web Programmer</p>
+      <h2 class="fw-bold mb-5 text-white">💼 Portfolio</h2>
+      
+      <div class="position-relative d-inline-block">
+        <img src="iam.jpg" alt="JubJub Developer" class="portfolio-image mb-4">
+      </div>
+      
+      <h3 class="fw-bold text-white">BuGErr0r JubJub</h3>
+      <p class="hero-subtitle mb-4">Full Stack Game Developer & Web Programmer</p>
+      
+      <div class="social-links mb-5">
+        <a href="https://www.facebook.com/BugErr0rJubJub" target="_blank" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://github.com/BugErr0rJubJub" target="_blank" class="social-icon github"><i class="fab fa-github"></i></a>
+        <a href="https://discord.gg/xrh68H5" target="_blank" class="social-icon discord"><i class="fab fa-discord"></i></a>
+        <a href="https://www.youtube.com/@BugErr0rJubJub" target="_blank" class="social-icon youtube"><i class="fab fa-youtube"></i></a>
+      </div>
 
-        <!-- Social Links -->
-        <div class="social-links mt-3 mb-4">
-        <a href="https://www.facebook.com/BugErr0rJubJub" target="_blank" class="social-icon facebook" title="Facebook">
-            <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="https://github.com/BugErr0rJubJub" target="_blank" class="social-icon github" title="GitHub">
-            <i class="fab fa-github"></i>
-        </a>
-        <a href="https://discord.gg/xrh68H5" target="_blank" class="social-icon discord" title="Discord">
-            <i class="fab fa-discord"></i>
-        </a>
-        <a href="https://www.youtube.com/@BugErr0rJubJub" target="_blank" class="social-icon youtube" title="YouTube">
-            <i class="fab fa-youtube"></i>
-        </a>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <p class="lead text-white-50 mb-5">
+            สวัสดีครับ ผมคือ <b class="text-white">JubJub Developer</b> — นักพัฒนาเกมและเว็บไซต์อิสระ <br>
+            มีประสบการณ์ด้านการพัฒนาเซิร์ฟเวอร์เกม เช่น <b class="text-white">Arma 3 / FiveM / WarZ</b> <br>
+            รวมถึงระบบ Web Backend, Database, และระบบเชื่อมต่อ API ระหว่างเกมกับเว็บ <br>
+            เน้นงานคุณภาพ ปลอดภัย และโค้ดสะอาด พร้อมให้คำปรึกษาเต็มรูปแบบ 💪
+          </p>
         </div>
+      </div>
 
-
-      <p class="mt-3 mb-4">
-        สวัสดีครับ ผมคือ <b>JubJub Developer</b> — นักพัฒนาเกมและเว็บไซต์อิสระ  
-        มีประสบการณ์ด้านการพัฒนาเซิร์ฟเวอร์เกม เช่น <b>Arma 3 / FiveM / WarZ</b>  
-        รวมถึงระบบ Web Backend, Database, และระบบเชื่อมต่อ API ระหว่างเกมกับเว็บ  
-        เน้นงานคุณภาพ ปลอดภัย และโค้ดสะอาด พร้อมให้คำปรึกษาเต็มรูปแบบ 💪
-      </p>
-
-      <h5 class="fw-bold mt-4 mb-3">🧠 ทักษะและความสามารถ</h5>
-      <div>
+      <h5 class="fw-bold mt-5 mb-3 text-white">🧠 ทักษะและความสามารถ</h5>
+      <div class="mb-5">
         <span class="skill-badge">C++ / C# / VB / LUA / SQF</span>
         <span class="skill-badge">PHP / JavaScript</span>
         <span class="skill-badge">MySQL</span>
@@ -188,157 +302,119 @@
         <span class="skill-badge">Security / Optimization</span>
       </div>
 
-      <h5 class="fw-bold mt-5 mb-3">📂 ตัวอย่างผลงานที่ผ่านมา</h5>
-
-      <div class="row justify-content-center">
-        <!-- Card 1 -->
-        <div class="col-md-4 mb-3">
-            <div class="card shadow-sm">
-            <img src="arma3.jpg" class="card-img-top" alt="Project 1">
-            <div class="card-body">
-                <h6 class="fw-bold">Altis Life Server</h6>
-                <p class="text-muted small">ระบบ Roleplay เต็มรูปแบบ + Database Sync</p>
-                <div class="scroll-icons">
+      <h5 class="fw-bold mt-5 mb-4 text-white">📂 ผลงานที่ภาคภูมิใจ</h5>
+      <div class="row g-4 justify-content-center">
+        <!-- Project 1 -->
+        <div class="col-md-4">
+          <div class="project-card shadow-sm">
+            <img src="arma3.jpg" class="card-img-top" alt="Altis Life">
+            <div class="card-body text-start">
+              <h6 class="fw-bold text-white">Altis Life Server</h6>
+              <p class="text-muted small">ระบบ Roleplay เต็มรูปแบบ + Database Sync ประสิทธิภาพสูง</p>
+              <div class="scroll-icons">
                 <div class="scroll-track">
-                    <img src="brg.jpg" alt="BangRaChan">
-                    <!-- <img src="armaicon.png" alt="Arma">
-                    <img src="cloud.png" alt="Cloud">
-                    <img src="mysql.png" alt="MySQL">
-                    <img src="database.png" alt="Database"> -->
-                    <!-- จะเพิ่มกี่รูปก็ได้ -->
+                  <img src="brg.jpg" alt="BangRaChan">
+                  <img src="brg.jpg" alt="BangRaChan"> <!-- Duplicate for infinite scroll -->
                 </div>
-                </div>
-            </div>
-            </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="col-md-4 mb-3">
-            <div class="card shadow-sm">
-            <img src="FiveM.jpg" class="card-img-top" alt="Project 2">
-            <div class="card-body">
-                <h6 class="fw-bold">FiveM Roleplay System</h6>
-                <p class="text-muted small">ระบบอาชีพ / บ้าน / ยานพาหนะ / Job System</p>
-                <div class="scroll-icons">
-                <div class="scroll-track">
-                    <img src="gg.png" alt="GoodGame - 1 year 10 Months">
-                    <img src="state.png" alt="STATE NYC - 3 Months">
-                    <img src="ksls.png" alt="KSLS - 3 Months">
-                    <img src="flex.png" alt="flex - 5 Months">
-                    <img src="sp.png" alt="Sippinland - 5 Months">
-                    <img src="ct.png" alt="Cooltown - 8 Months">
-                    <img src="tsc.png" alt="TSC - 1 Months">
-                    <img src="ps.png" alt="ProSpeed - 1 Months">
-                    <img src="100+.png" alt="">
-                </div>
-                </div>
-            </div>
-            </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="col-md-4 mb-3">
-            <div class="card shadow-sm">
-            <img src="infes.jpg" class="card-img-top" alt="Project 3">
-            <div class="card-body">
-                <h6 class="fw-bold">Infestation / WarZTH / Survival / PVP / MMO</h6>
-                <p class="text-muted small">หน้าเว็บจัดการระบบเกม / Src vs2008 vs2013 / Anticheat PGG</p>
-                <div class="scroll-icons">
-                <div class="scroll-track">
-                    <img src="https://cdn.discordapp.com/attachments/1456380735412768933/1479494567995768954/image.png?ex=69cc8af0&is=69cb3970&hm=91f82dc9e9e957eab9b7f0b730e790951f57f21a78c10caf9f8510f380195a83&" alt="WarZ">
-                  <img src="https://cdn.discordapp.com/attachments/1456380735412768933/1488387511586656326/619545044_880265358196148_434689437573142978_n.png?ex=69cc9863&is=69cb46e3&hm=2b4321c1f942c2e422770f7b49907b98c9c47376cd2b90c81a8401658b80f895&" alt="WarZ">
-                <img src="https://media.discordapp.net/attachments/1456380735412768933/1460619371415343277/image.png?ex=69cc6e0b&is=69cb1c8b&hm=9b6053d91edc683e52b1e466235e479f390df8ff731b6f5e1d3d1eda4e7c92d1&=&format=webp&quality=lossless&width=1103&height=856" alt="WarZ">
-                 <img src="https://media.discordapp.net/attachments/1456380735412768933/1488380056915935373/660375192_27281979538069342_1437899954192006305_n.jpg?ex=69cc9172&is=69cb3ff2&hm=d9f0bffdbad7138f4578b6a1d9ca33f5c78c547ab733a788c3761cef2a9becc8&=&format=webp&width=920&height=856" alt="WarZ">
-                  <img src="https://scontent.fubp1-1.fna.fbcdn.net/v/t39.30808-6/622979628_26666160662984569_2762879280437482906_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=13d280&_nc_eui2=AeG3UWdwXhYe6ns7SPkc0anBIbBTqO7k1wwhsFOo7uTXDMYWQrgtJ2iE4kqaIV72XGOBuMb5ufaXh6SPC2n5szU8&_nc_ohc=IgWB_RRNnm4Q7kNvwEzR-Eq&_nc_oc=AdoW2cZ2ytuahrLB6xmbZ6RVpXlbXblNub2lUFmy0GPWQByVZRMg_27cTpohbYHqeL4&_nc_zt=23&_nc_ht=scontent.fubp1-1.fna&_nc_gid=RrL33ozhkNR4KfOkvzDgzg&_nc_ss=7a3a8&oh=00_AfxORYo2uaJ1Zbttg3A8pnzKQxY2pkjeSBdWPMtmPIQrEg&oe=69D10540" alt="WarZ">
-                  <img src="https://media.discordapp.net/attachments/1466838514439160084/1466838811282771989/unnamed.jpg?ex=69cbfc19&is=69caaa99&hm=baf033b71c845cecdeaae7ad69f90b4d6a01f3b9cd9044eeb41fa7e972a6984a&=&format=webp&width=856&height=856" alt="WarZ">
-                </div>
-                </div>
-            </div>
-            </div>
-        </div>
-
-      <!-- Card 4 -->
-        <div class="col-md-4 mb-3">
-            <div class="card shadow-sm">
-            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpng.pngtree.com%2Fpng-clipart%2F20230928%2Foriginal%2Fpngtree-retro-gamer-distressed-gaming-graphic-png-image_13008902.png&f=1&nofb=1&ipt=b9df1819bd2ae1bd9ea550defae5279b94684e0d5ca49e3011b5111df80443c1" class="card-img-top" alt="Project 3">
-            <div class="card-body">
-                <h6 class="fw-bold">Pangya RanEP7/EP9 ROG SEAL C9 PB etc.</h6>
-                <p class="text-muted small">สามารถติดต่อสอบถามเรื่องServer เกมส์อื่นๆได้</p>
-                <div class="scroll-icons">
-                <div class="scroll-track">
-                    <img src="https://cdn.discordapp.com/attachments/758541664066338816/947499596484055080/unknown.png?ex=69cc8203&is=69cb3083&hm=9402d0c4814edc71e7a317385931ffc9ef7bc14ef184485fae712e51f7920f23&" alt="*">
-                  <img src="https://cdn.discordapp.com/attachments/758541664066338816/947499719796588574/unknown.png?ex=69cc8220&is=69cb30a0&hm=18ea7ba6bdb426c9057869ff98dfdd21fd306c8a8fb12d647d3ae29b75ce4214&" alt="*">
-                <img src="https://cdn.discordapp.com/attachments/758541664066338816/947499846904975380/unknown.png?ex=69cc823f&is=69cb30bf&hm=295cc7e7c06ae72525548fa40ccac28468f0b1a83dc7f29c4f6eafa74f1f2029&" alt="*">
-                 <img src="https://media.discordapp.net/attachments/758541664066338816/1293045770647244810/image.webp?ex=69cc8ab7&is=69cb3937&hm=e1c966e6ebfd6d21995f7253d56790e8b2f3415317dbf752b4b664bdb022fe6c&=&format=webp" alt="*">
-                </div>
-                </div>
+              </div>
             </div>
           </div>
         </div>
-      
-      <!-- Card 4 -->
-        <div class="col-md-4 mb-3">
-            <div class="card shadow-sm">
-            <img src="php.png" class="card-img-top" alt="Project 3">
-            <div class="card-body">
-                <h6 class="fw-bold">Web Control Panel</h6>
-                <p class="text-muted small">หน้าเว็บจัดการระบบเกม / เชื่อมต่อฐานข้อมูล</p>
-                <div class="scroll-icons">
+        <!-- Project 2 -->
+        <div class="col-md-4">
+          <div class="project-card shadow-sm">
+            <img src="FiveM.jpg" class="card-img-top" alt="FiveM">
+            <div class="card-body text-start">
+              <h6 class="fw-bold text-white">FiveM Roleplay System</h6>
+              <p class="text-muted small">ระบบอาชีพ / บ้าน / ยานพาหนะ และ Job System แบบครบวงจร</p>
+              <div class="scroll-icons">
                 <div class="scroll-track">
-                    <img src="webarma3.png" alt="PHP">
-                    <img src="admin_arma3.png" alt="PHP">
+                  <img src="gg.png" alt="GoodGame"><img src="state.png" alt="STATE NYC">
+                  <img src="ksls.png" alt="KSLS"><img src="flex.png" alt="flex">
+                  <img src="sp.png" alt="Sippinland"><img src="ct.png" alt="Cooltown">
+                  <img src="tsc.png" alt="TSC"><img src="ps.png" alt="ProSpeed">
+                  <img src="100+.png" alt="100+">
+                  <!-- Duplicate for smooth loop -->
+                  <img src="gg.png" alt="GoodGame"><img src="state.png" alt="STATE NYC">
+                  <img src="ksls.png" alt="KSLS"><img src="flex.png" alt="flex">
+                  <img src="sp.png" alt="Sippinland"><img src="ct.png" alt="Cooltown">
+                  <img src="tsc.png" alt="TSC"><img src="ps.png" alt="ProSpeed">
+                  <img src="100+.png" alt="100+">
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Project 3 -->
+        <div class="col-md-4">
+          <div class="project-card shadow-sm">
+            <img src="infes.jpg" class="card-img-top" alt="WarZ">
+            <div class="card-body text-start">
+              <h6 class="fw-bold text-white">WarZ / Survival / MMO</h6>
+              <p class="text-muted small">ระบบ Web Management / Anticheat PGG / Src VS2008-2013</p>
+              <div class="scroll-icons">
+                <div class="scroll-track">
+                  <img src="https://cdn.discordapp.com/attachments/1456380735412768933/1479494567995768954/image.png?ex=69cc8af0&is=69cb3970&hm=91f82dc9e9e957eab9b7f0b730e790951f57f21a78c10caf9f8510f380195a83&" alt="WarZ">
+                  <img src="https://cdn.discordapp.com/attachments/1456380735412768933/1488387511586656326/619545044_880265358196148_434689437573142978_n.png?ex=69cc9863&is=69cb46e3&hm=2b4321c1f942c2e422770f7b49907b98c9c47376cd2b90c81a8401658b80f895&" alt="WarZ">
+                  <img src="https://media.discordapp.net/attachments/14 que.png" alt="WarZ">
+                  <!-- Loop -->
+                  <img src="https://cdn.discordapp.com/attachments/1456380735412768933/1479494567995768954/image.png?ex=69cc8af0&is=69cb3970&hm=91f82dc9e9e957eab9b7f0b730e790951f57f21a78c10caf9f8510f380195a83&" alt="WarZ">
                 </div>
+              </div>
             </div>
-            </div>
+          </div>
         </div>
-        </div>
+      </div>
     </div>
   </section>
 
+  <!-- Modal PGG DB (Console Style) -->
   <div class="modal fade" id="warzExpiryModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content border-0 shadow-lg">
-            <div class="modal-header bg-dark text-white">
-                <h5 class="modal-title fw-bold">
-                    <i class="fa-solid fa-magnifying-glass-chart me-2"></i> 
-                    WarZ System Status (Auto Sync)
+            <div class="modal-header border-0">
+                <h5 class="modal-title fw-bold text-white">
+                    <i class="fa-solid fa-terminal me-2 text-accent"></i>
+                    WarZ System Status <span class="badge bg-primary ms-2">v2.0</span>
                 </h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-0">
                 <div class="table-responsive">
-                    <table class="table table-hover align-middle mb-0">
-                        <thead class="table-light">
+                    <table class="table table-dark table-hover align-middle mb-0">
+                        <thead>
                             <tr>
-                                <th style="width: 25%;">Project Name</th>
-                                <th style="width: 45%;">Raw Data (Internal)</th>
+                                <th style="width: 30%;">Project</th>
+                                <th style="width: 40%;">Internal Data</th>
                                 <th style="width: 30%;" class="text-center">Time Remaining</th>
                             </tr>
                         </thead>
-                        <tbody id="warzTableBody">
-                            </tbody>
+                        <tbody id="warzTableBody"></tbody>
                     </table>
                 </div>
             </div>
-            <div class="modal-footer bg-light">
-                <div class="me-auto">
-                    <small class="text-muted italic">ระบบจะคำนวณวันหมดอายุอัตโนมัติจากไฟล์</small>
-                </div>
-                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">ปิดหน้าต่าง</button>
+            <div class="modal-footer bg-dark border-top border-secondary">
+                <small class="text-muted italic">Auto-syncing from remote JSON endpoints...</small>
+                <button type="button" class="btn btn-outline-light btn-sm" data-bs-dismiss="modal">CLOSE</button>
             </div>
         </div>
     </div>
-</div>
+  </div>
+
+  <footer class="py-5 text-center text-white-50">
+    <div class="container">
+      <p class="m-0">Copyright &copy; <span class="text-white">JubJub Developer</span> 2025 | Built with <i class="fa-solid fa-heart text-danger"></i> by Dev</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
   document.addEventListener('DOMContentLoaded', function() {
-    // กรอกชื่อไฟล์ (ไม่ต้องใส่ .json)
     const warzProjects = ['WarZ_SIAM'];
     const tableBody = document.getElementById('warzTableBody');
 
     function getDaysLeft(expiryStr) {
-        // รองรับรูปแบบวันที่ "YYYY-MM-DD HH:mm:ss" จาก JSON
-        const expiryDate = new Date(expiryStr.replace(/-/g, '/')); 
+        const expiryDate = new Date(expiryStr.replace(/-/g, '/'));
         const today = new Date();
         today.setHours(0, 0, 0, 0);
         expiryDate.setHours(0, 0, 0, 0);
@@ -347,41 +423,31 @@
     }
 
     async function updateWarZTable() {
-        tableBody.innerHTML = '<tr><td colspan="3" class="text-center py-4">กำลังดึงข้อมูล...</td></tr>';
+        tableBody.innerHTML = '<tr class="text-center py-5"><td colspan="3">Connecting to secure server...</td></tr>';
         let hasData = false;
         let rowsHtml = '';
-
         for (const projectName of warzProjects) {
             try {
-                // Fetch ไฟล์ JSON
                 const response = await fetch(projectName + '.json?cache=' + Date.now());
                 if (!response.ok) continue;
-
-                // เปลี่ยนจากการอ่าน .text() เป็น .json()
                 const data = await response.json();
-
-                // ตรวจสอบว่ามี field 'expiry' และ 'status' อยู่ใน JSON หรือไม่
                 if (data && data.expiry) {
                     const daysLeft = getDaysLeft(data.expiry);
-
                     let badgeClass = 'bg-success';
                     if (daysLeft <= 7) badgeClass = 'bg-warning text-dark';
                     if (daysLeft <= 0 || data.status !== 'active') badgeClass = 'bg-danger';
-
-                    // แสดงข้อมูล Endpoint หรือ Token เล็กๆ ในคอลัมน์กลางเพื่อความสวยงาม
-                    const displayInfo = `Status: ${data.status}<br><small class="text-muted">IP: ${data.endpoint || '-'}</small>`;
-
+                    
+                    const displayInfo = `Status: ${data.status} <br> <small class="text-muted">Endpoint: ${data.endpoint || 'Hidden'}</small>`;
                     rowsHtml += `
                         <tr>
-                            <td class="fw-bold">
-                                <i class="fa-regular fa-file-code me-2 text-secondary"></i>
-                                ${projectName}
+                            <td class="fw-bold text-white">
+                                <i class="fa-solid fa-microchip me-2 text-primary"></i> ${projectName}
                             </td>
-                            <td><code class="small bg-light p-1 rounded">${displayInfo}</code></td>
+                            <td><code class="small text-accent">${displayInfo}</code></td>
                             <td class="text-center">
-                                <div class="badge ${badgeClass} shadow-sm" style="min-width: 100px; padding: 0.6em;">
-                                    <i class="fa-solid fa-calendar-day me-1"></i>
-                                    ${daysLeft > 0 ? 'เหลือ ' + daysLeft + ' วัน' : (daysLeft === 0 ? 'หมดวันนี้' : 'หมดอายุแล้ว')}
+                                <div class="status-badge ${badgeClass} shadow-sm d-inline-block" style="min-width: 120px;">
+                                    <i class="fa-solid fa-clock me-1"></i>
+                                    ${daysLeft > 0 ? daysLeft + ' Days Left' : (daysLeft === 0 ? 'Expires Today' : 'Expired')}
                                 </div>
                             </td>
                         </tr>`;
@@ -391,39 +457,15 @@
                 console.error("Error loading " + projectName, err);
             }
         }
-        tableBody.innerHTML = hasData ? rowsHtml : '<tr><td colspan="3" class="text-center py-4 text-muted">ไม่พบข้อมูล</td></tr>';
+        tableBody.innerHTML = hasData ? rowsHtml : '<tr><td colspan="3" class="text-center py-4 text-muted">No active projects found.</td></tr>';
     }
 
     const myModal = document.getElementById('warzExpiryModal');
     if (myModal) {
         myModal.addEventListener('show.bs.modal', updateWarZTable);
     }
-});
-</script>
-  <!-- Modal แสดงรูปใหญ่ -->
-<div class="modal fade" id="scrollImageModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content bg-transparent border-0">
-      <div class="modal-body p-0 text-center">
-        <img id="scrollModalImage" src="" class="img-fluid rounded shadow-sm" alt="Preview">
-      </div>
-      <div class="modal-footer justify-content-center border-0">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container text-center text-white">
-      <p class="m-0">Copyright &copy; JubJub Developer 2025</p>
-    </div>
-  </footer>
-
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  });
+  </script>
   <script src="scripts.js"></script>
 </body>
 </html>

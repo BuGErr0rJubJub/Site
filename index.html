@@ -12,207 +12,209 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
   
+  <!-- ส่วน CSS ให้ใช้โค้ดที่กุ้งส่งให้ในรอบที่แล้วนะคะ -->
   <style>
+    /* ใส่ CSS ที่กุ้งส่งให้ก่อนหน้านี้ตรงนี้ค่ะ */
     :root {
-      --primary-color: #6366f1;
-      --secondary-color: #a855f7;
-      --dark-bg: #0f172a;
-      --dark-card: #1e293b;
-      --accent-color: #22d3ee;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-    }
+  --primary-color: #6366f1;
+  --secondary-color: #a855f7;
+  --dark-bg: #0f172a;
+  --dark-card: #1e293b;
+  --accent-color: #22d3ee;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+}
 
-    body {
-      font-family: 'Kanit', sans-serif;
-      background-color: var(--dark-bg);
-      color: var(--text-main);
-      overflow-x: hidden;
-    }
+body {
+  font-family: 'Kanit', sans-serif;
+  background-color: var(--dark-bg);
+  color: var(--text-main);
+  overflow-x: hidden;
+}
 
-    /* --- Background Animation --- */
-    .bg-glow {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      z-index: -1;
-      background: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #0f172a 100%);
-    }
-    .bg-glow::after {
-      content: "";
-      position: absolute;
-      top: -50%; left: -50%; width: 200%; height: 200%;
-      background: conic-gradient(from 0deg, transparent, var(--primary-color), transparent 30%);
-      animation: rotate 10s linear infinite;
-      opacity: 0.1;
-      z-index: -1;
-    }
-    @keyframes rotate { 100% { transform: rotate(360deg); } }
+/* --- Background Animation --- */
+.bg-glow {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: -1;
+  background: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #0f172a 100%);
+}
+.bg-glow::after {
+  content: "";
+  position: absolute;
+  top: -50%; left: -50%; width: 200%; height: 200%;
+  background: conic-gradient(from 0deg, transparent, var(--primary-color), transparent 30%);
+  animation: rotate 10s linear infinite;
+  opacity: 0.1;
+  z-index: -1;
+}
+@keyframes rotate { 100% { transform: rotate(360deg); } }
 
-    /* --- Navbar --- */
-    .navbar {
-      background: rgba(15, 23, 42, 0.8) !important;
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-    .navbar-brand {
-      font-weight: 800;
-      background: linear-gradient(to right, var(--primary-color), var(--accent-color));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-size: 1.5rem;
-    }
-    .nav-link {
-      color: var(--text-muted) !important;
-      transition: 0.3s;
-      font-weight: 400;
-    }
-    .nav-link:hover, .nav-link.active {
-      color: var(--accent-color) !important;
-      transform: translateY(-2px);
-    }
+/* --- Navbar --- */
+.navbar {
+  background: rgba(15, 23, 42, 0.8) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.navbar-brand {
+  font-weight: 800;
+  background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.5rem;
+}
+.nav-link {
+  color: var(--text-muted) !important;
+  transition: 0.3s;
+  font-weight: 400;
+}
+.nav-link:hover, .nav-link.active {
+  color: var(--accent-color) !important;
+  transform: translateY(-2px);
+}
 
-    /* --- Header --- */
-    header {
-      padding: 120px 0 80px;
-      background: transparent;
-    }
-    .hero-title {
-      font-size: 4rem;
-      font-weight: 800;
-      letter-spacing: -1px;
-      background: linear-gradient(to bottom, #fff 0%, #94a3b8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero-subtitle {
-      color: var(--accent-color);
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 600;
-    }
+/* --- Header --- */
+header {
+  padding: 120px 0 80px;
+  background: transparent;
+}
+.hero-title {
+  font-size: 4rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  background: linear-gradient(to bottom, #fff 0%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-subtitle {
+  color: var(--accent-color);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+}
 
-    /* --- Product Section --- */
-    #product-list .card {
-      background: var(--dark-card);
-      border: 1px solid rgba(255,255,255,0.05);
-      transition: 0.3s ease;
-      color: white;
-    }
-    #product-list .card:hover {
-      transform: translateY(-10px);
-      border-color: var(--primary-color);
-      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
-    }
+/* --- Product Section --- */
+#product-list .card {
+  background: var(--dark-card);
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: 0.3s ease;
+  color: white;
+}
+#product-list .card:hover {
+  transform: translateY(-10px);
+  border-color: var(--primary-color);
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+}
 
-    /* --- Portfolio --- */
-    .portfolio-section {
-      background: rgba(30, 41, 59, 0.5);
-      border-radius: 50px 50px 0 0;
-      padding: 100px 0;
-      margin-top: 50px;
-    }
-    .portfolio-image {
-      width: 200px; height: 200px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid var(--primary-color);
-      box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
-      transition: 0.5s;
-    }
-    .portfolio-image:hover { transform: rotate(5deg) scale(1.05); }
+/* --- Portfolio --- */
+.portfolio-section {
+  background: rgba(30, 41, 59, 0.5);
+  border-radius: 50px 50px 0 0;
+  padding: 100px 0;
+  margin-top: 50px;
+}
+.portfolio-image {
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--primary-color);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+  transition: 0.5s;
+}
+.portfolio-image:hover { transform: rotate(5deg) scale(1.05); }
 
-    .social-icon {
-      width: 45px; height: 45px;
-      border-radius: 12px;
-      display: inline-flex; align-items: center; justify-content: center;
-      color: white; transition: 0.3s; text-decoration: none;
-      font-size: 20px;
-    }
-    .social-icon:hover { transform: translateY(-5px); filter: brightness(1.2); }
-    .facebook { background: #1877F2; }
-    .github { background: #333; }
-    .discord { background: #5865f2; }
-    .youtube { background: #FF0000; }
+.social-icon {
+  width: 45px; height: 45px;
+  border-radius: 12px;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: white; transition: 0.3s; text-decoration: none;
+  font-size: 20px;
+}
+.social-icon:hover { transform: translateY(-5px); filter: brightness(1.2); }
+.facebook { background: #1877F2; }
+.github { background: #333; }
+.discord { background: #5865f2; }
+.youtube { background: #FF0000; }
 
-    .skill-badge {
-      background: rgba(99, 102, 241, 0.1);
-      border: 1px solid var(--primary-color);
-      color: var(--accent-color);
-      padding: 6px 16px;
-      border-radius: 50px;
-      margin: 5px;
-      font-size: 0.85rem;
-      display: inline-block;
-      transition: 0.3s;
-    }
-    .skill-badge:hover {
-      background: var(--primary-color);
-      color: white;
-    }
+.skill-badge {
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid var(--primary-color);
+  color: var(--accent-color);
+  padding: 6px 16px;
+  border-radius: 50px;
+  margin: 5px;
+  font-size: 0.85rem;
+  display: inline-block;
+  transition: 0.3s;
+}
+.skill-badge:hover {
+  background: var(--primary-color);
+  color: white;
+}
 
-    /* --- Project Cards --- */
-    .project-card {
-      background: var(--dark-card);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 20px;
-      overflow: hidden;
-      transition: 0.3s;
-    }
-    .project-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-      border-color: var(--secondary-color);
-    }
-    .project-card img {
-      transition: 0.5s;
-      height: 200px;
-      object-fit: cover;
-    }
-    .project-card:hover img { transform: scale(1.1); }
+/* --- Project Cards --- */
+.project-card {
+  background: var(--dark-card);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+  border-color: var(--secondary-color);
+}
+.project-card img {
+  transition: 0.5s;
+  height: 200px;
+  object-fit: cover;
+}
+.project-card:hover img { transform: scale(1.1); }
 
-    /* --- Scroll Icons --- */
-    .scroll-icons {
-      overflow: hidden;
-      position: relative;
-      height: 60px;
-      mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-    }
-    .scroll-track {
-      display: flex; gap: 15px;
-      width: max-content;
-      animation: scroll-left 20s linear infinite;
-    }
-    .scroll-track img {
-      height: 45px; border-radius: 8px;
-      transition: 0.3s; cursor: pointer;
-    }
-    .scroll-track img:hover { transform: scale(1.2); }
-    @keyframes scroll-left {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
+/* --- Scroll Icons --- */
+.scroll-icons {
+  overflow: hidden;
+  position: relative;
+  height: 60px;
+  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+.scroll-track {
+  display: flex; gap: 15px;
+  width: max-content;
+  animation: scroll-left 20s linear infinite;
+}
+.scroll-track img {
+  height: 45px; border-radius: 8px;
+  transition: 0.3s; cursor: pointer;
+}
+.scroll-track img:hover { transform: scale(1.2); }
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
 
-    /* --- Modal System Status --- */
-    .modal-content {
-      background: var(--dark-bg);
-      color: white;
-      border: 1px solid var(--primary-color);
-    }
-    .modal-header {
-      background: linear-gradient(to right, #1e1b4b, #312e81);
-      color: white;
-    }
-    .table { color: var(--text-main); }
-    .table thead { background: #1e293b; color: var(--accent-color); }
-    .status-badge {
-      font-family: 'JetBrains Mono', monospace;
-      padding: 6px 12px;
-      border-radius: 6px;
-    }
+/* --- Modal System Status --- */
+.modal-content {
+  background: var(--dark-bg);
+  color: white;
+  border: 1px solid var(--primary-color);
+}
+.modal-header {
+  background: linear-gradient(to right, #1e1b4b, #312e81);
+  color: white;
+}
+.table { color: var(--text-main); }
+.table thead { background: #1e293b; color: var(--accent-color); }
+.status-badge {
+  font-family: 'JetBrains Mono', monospace;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
 
-    footer {
-      background: #020617;
-      border-top: 1px solid rgba(255,255,255,0.05);
-    }
+footer {
+  background: #020617;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
   </style>
 </head>
 <body>
@@ -261,7 +263,7 @@
     </div>
   </section>
 
-  <!-- Portfolio Section -->
+    <!-- Portfolio Section -->
   <section id="portfolio" class="portfolio-section text-center">
     <div class="container">
       <h2 class="fw-bold mb-5 text-white">💼 Portfolio</h2>
@@ -314,7 +316,7 @@
               <div class="scroll-icons">
                 <div class="scroll-track">
                   <img src="brg.jpg" alt="BangRaChan">
-                  <img src="brg.jpg" alt="BangRaChan"> <!-- Duplicate for infinite scroll -->
+                  <img src="brg.jpg" alt="BangRaChan">
                 </div>
               </div>
             </div>
@@ -334,7 +336,6 @@
                   <img src="sp.png" alt="Sippinland"><img src="ct.png" alt="Cooltown">
                   <img src="tsc.png" alt="TSC"><img src="ps.png" alt="ProSpeed">
                   <img src="100+.png" alt="100+">
-                  <!-- Duplicate for smooth loop -->
                   <img src="gg.png" alt="GoodGame"><img src="state.png" alt="STATE NYC">
                   <img src="ksls.png" alt="KSLS"><img src="flex.png" alt="flex">
                   <img src="sp.png" alt="Sippinland"><img src="ct.png" alt="Cooltown">
@@ -354,11 +355,10 @@
               <p class="text-muted small">ระบบ Web Management / Anticheat PGG / Src VS2008-2013</p>
               <div class="scroll-icons">
                 <div class="scroll-track">
-                  <img src="https://cdn.discordapp.com/attachments/1456380735412768933/1479494567995768954/image.png?ex=69cc8af0&is=69cb3970&hm=91f82dc9e9e957eab9b7f0b730e790951f57f21a78c10caf9f8510f380195a83&" alt="WarZ">
-                  <img src="https://cdn.discordapp.com/attachments/1456380735412768933/1488387511586656326/619545044_880265358196148_434689437573142978_n.png?ex=69cc9863&is=69cb46e3&hm=2b4321c1f942c2e422770f7b49907b98c9c47376cd2b90c81a8401658b80f895&" alt="WarZ">
+                  <img src="https://cdn.discordapp.com/attachments/1456380735412768933/1479494567995768954/image.png" alt="WarZ">
+                  <img src="https://cdn.discordapp.com/attachments/1456380735412768933/1488387511586656326/619545044_880265358196148_434689437573142978_n.png" alt="WarZ">
                   <img src="https://media.discordapp.net/attachments/14 que.png" alt="WarZ">
-                  <!-- Loop -->
-                  <img src="https://cdn.discordapp.com/attachments/1456380735412768933/1479494567995768954/image.png?ex=69cc8af0&is=69cb3970&hm=91f82dc9e9e957eab9b7f0b730e790951f57f21a78c10caf9f8510f380195a83&" alt="WarZ">
+                  <img src="https://cdn.discordapp.com/attachments/1456380735412768933/1479494567995768954/image.png" alt="WarZ">
                 </div>
               </div>
             </div>
@@ -394,26 +394,31 @@
                 </div>
             </div>
             <div class="modal-footer bg-dark border-top border-secondary">
-                <small class="text-muted italic">Auto-syncing from remote JSON endpoints...</small>
+                <small class la-text-muted italic">Auto-syncing from remote JSON endpoints...</small>
                 <button type="button" class="btn btn-outline-light btn-sm" data-bs-dismiss="modal">CLOSE</button>
             </div>
         </div>
     </div>
   </div>
 
+    <!-- Footer -->
   <footer class="py-5 text-center text-white-50">
     <div class="container">
       <p class="m-0">Copyright &copy; <span class="text-white">JubJub Developer</span> 2025 | Built with <i class="fa-solid fa-heart text-danger"></i> by Dev</p>
     </div>
   </footer>
 
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const warzProjects = ['WarZ_SIAM'];
+    // รายชื่อโปรเจกต์ที่ต้องการดึงข้อมูล (พี่บั๊คสามารถเพิ่มชื่อไฟล์ .json อื่นๆ ลงใน array นี้ได้เลยค่ะ)
+    const warzProjects = ['WarZ_SIAM']; 
     const tableBody = document.getElementById('warzTableBody');
 
+    // ฟังก์ชันคำนวณวันที่เหลือ (วัน)
     function getDaysLeft(expiryStr) {
+        if (!expiryStr) return -1;
         const expiryDate = new Date(expiryStr.replace(/-/g, '/'));
         const today = new Date();
         today.setHours(0, 0, 0, 0);
@@ -422,22 +427,30 @@
         return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     }
 
+    // ฟังก์ชันอัปเดตตารางสถานะ PGG DB
     async function updateWarZTable() {
+        if (!tableBody) return;
+        
         tableBody.innerHTML = '<tr class="text-center py-5"><td colspan="3">Connecting to secure server...</td></tr>';
         let hasData = false;
         let rowsHtml = '';
+
         for (const projectName of warzProjects) {
             try {
-                const response = await fetch(projectName + '.json?cache=' + Date.now());
+                // ใช้ Date.now() เพื่อป้องกันการ Cache ข้อมูลเก่าจาก Browser
+                const response = await fetch(`${projectName}.json?cache=${Date.now()}`);
                 if (!response.ok) continue;
+                
                 const data = await response.json();
                 if (data && data.expiry) {
                     const daysLeft = getDaysLeft(data.expiry);
                     let badgeClass = 'bg-success';
-                    if (daysLeft <= 7) badgeClass = 'bg-warning text-dark';
+                    
+                    if (daysLeft <= 7 && daysLeft > 0) badgeClass = 'bg-warning text-dark';
                     if (daysLeft <= 0 || data.status !== 'active') badgeClass = 'bg-danger';
                     
-                    const displayInfo = `Status: ${data.status} <br> <small class="text-muted">Endpoint: ${data.endpoint || 'Hidden'}</small>`;
+                    const displayInfo = `Status: ${data.status || 'Unknown'} <br> <small class="text-muted">Endpoint: ${data.endpoint || 'Hidden'}</small>`;
+                    
                     rowsHtml += `
                         <tr>
                             <td class="fw-bold text-white">
@@ -454,18 +467,21 @@
                     hasData = true;
                 }
             } catch (err) {
-                console.error("Error loading " + projectName, err);
+                console.error(`[PGG DB] Error loading ${projectName}:`, err);
             }
         }
+        
         tableBody.innerHTML = hasData ? rowsHtml : '<tr><td colspan="3" class="text-center py-4 text-muted">No active projects found.</td></tr>';
     }
 
+    // เปิด Modal แล้วให้เริ่มดึงข้อมูลทันที
     const myModal = document.getElementById('warzExpiryModal');
     if (myModal) {
         myModal.addEventListener('show.bs.modal', updateWarZTable);
     }
   });
   </script>
+  <!-- เรียกใช้ scripts.js ภายนอก (ถ้ามี) -->
   <script src="scripts.js"></script>
 </body>
 </html>

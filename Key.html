@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PGG AES-256-CBC Token Encryptor/Decryptor</title>
-    <!-- โหลดคลัง CryptoJS จาก CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <style>
         body {
@@ -84,7 +83,7 @@
     <h2>PGG License Tool (2026)</h2>
     
     <div class="form-group">
-        <label for="secretKey">Secret Key (กุญแจหลักที่ใช้ในระบบ C++ / PHP):</label>
+        <label for="secretKey">Secret Key (กุญแจหลักที่ใช้ในระบบ C++):</label>
         <input type="text" id="secretKey" value="PGG_INTERNAL_SECRET_2026">
     </div>
 
@@ -116,27 +115,25 @@
         }
 
         try {
-            // 1. ทำการ Hash กุญแจด้วย SHA-256 เพื่อให้ได้ Binary Key 32 ไบต์ (เหมือนใน C++ CryptCreateHash CALG_SHA_256)
+            // 1. แฮชคีย์ด้วย SHA-256 เพื่อสร้างคีย์ดิบขนาด 32 ไบต์ให้สัมพันธ์กับ CryptCreateHash ในฝั่ง C++
             const hashedKey = CryptoJS.SHA256(keyText);
 
-            // 2. ดึง IV ขนาด 16 ไบต์ (128 บิต) มาจากช่วงแรกของ Hashed Key (ตรงกับ memcpy(iv, hashedKey, 16) ในระบบคุณ)
-            // CryptoJS ใช้ระบบ Word (1 word = 4 bytes) ดังนั้น 16 bytes = 4 words
+            // 2. ดึง 16 ไบต์แรกของแฮชมาใช้เป็น Vector เริ่มต้น (IV) เหมือนคำสั่ง memcpy ในตัวโปรแกรม
             const ivWords = CryptoJS.lib.WordArray.create(hashedKey.words.slice(0, 4), 16);
 
             if (isEncrypt) {
-                // --- ขั้นตอนการเข้ารหัส ---
+                // ขบวนการสร้างตัวเข้ารหัสลับ
                 const encrypted = CryptoJS.AES.encrypt(inputText, hashedKey, {
                     iv: ivWords,
                     mode: CryptoJS.mode.CBC,
                     padding: CryptoJS.pad.Pkcs7
                 });
                 
-                // ผลลัพธ์ที่ได้จะเป็น Base64 string พร้อมนำไปใส่ในฟิลด์ auth_token ของ GitHub JSON
                 outputElement.innerText = encrypted.toString();
                 outputElement.style.color = "#27ae60";
 
             } else {
-                // --- ขั้นตอนการถอดรหัส ---
+                // ขบวนการถอดกลับสารสนเทศ
                 const decrypted = CryptoJS.AES.decrypt(inputText, hashedKey, {
                     iv: ivWords,
                     mode: CryptoJS.mode.CBC,

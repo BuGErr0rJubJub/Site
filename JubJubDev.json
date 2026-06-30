@@ -3,5 +3,5 @@
   "status": "active",
   "expiry": "2030-12-31 23:59:59",
   "crc_check": "FD78F163",
-  "endpoint": "223.205.238.51"
+  "endpoint": "127.0.0.1"
 }
